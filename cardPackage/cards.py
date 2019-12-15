@@ -1,40 +1,57 @@
-import random;
+import random
 
-# suits=pass
-# ranks=pass
-# values=pass
+suits = pass
+ranks = pass
+values = pass
 
-# player=True
+player = True
+
 
 class Card:
     def __init__(self):
         pass
 
-    def __str__(self);
+    def __str__(self):
         pass
 
 
 class Deck:
+
     def __init__(self):
-        self.cards = []
-        self.build()
+        self.deck = []
+        for suite in suits:
+            for rank in ranks:
+                pass
 
-    def build(self):
-        for s in ["Spades", "Clubs", "Diamonds", "Hearts"]:
-            for v in range(1, 14):
-                self.cards.append(Card(s, v))
-
-    def show(self):
-        for c in self.cards:
-            c.show()
+    def __str__(self):
+        pass
 
     def shuffle(self):
-        for i in reversed(xrange(len(self.cards)-1)):
-            r = random.randint(0, i)
-            self.cards[r].show()
-            self.cards[i].show()
+        random.shuffle(self.deck)
 
+    def deal(self):
+        pass
 
-    # def showhumancards(self, rand):
-    #     self.cards[rand[0]].show()
-    #     self.cards[rand[1]].show()
+class Hand:
+    def __init__(self):
+        self.cards=[]
+        self.value=0
+        self.aces=0
+    
+    def add_card(self,card):
+        pass
+
+    def adjust_for_ace(self):
+        pass
+
+class Chips:
+
+    def __init__(self):
+        self.total=100
+        self.bet=0
+
+    def win_bet(self):
+        pass
+
+    def lose_bet(self):
+        pass
