@@ -11,20 +11,6 @@ class Chips:
         self.total -= self.bet
 
 
-def take_bet(chips):
-
-    while True:
-        try:
-            chips.bet = int(input("How many chips would you like to bet?"))
-        except ValueError:
-            print("Sorry, a bet must be an integer")
-        else:
-            if chips.bet > chips.total:
-                print("Sorry, your bet can't exceed", chips.total)
-            else:
-                break
-
-
 def hit(deck, hand):
 
     hand.add_card(deck.deal())
@@ -39,9 +25,10 @@ def hit_or_stand(deck, hand):
 
         if x[0].lower() == 'h':
             hit(deck, hand)
+
         elif x[0].lower() == 's':
             print("Player stands. Dealer is playing")
-            player = False
+            playing = False
 
         else:
             print("Sorry, please try again")
@@ -50,28 +37,41 @@ def hit_or_stand(deck, hand):
 
 
 def show_some(player, dealer):
-    pass
+    print("\nDealer's Hand:")
+    print(" <card hidden>")
+    print(''+dealer.cards[1].__str__()+"\n")
+    for x in player.cards:
+        print("Player's Hand: "+x.__str__())
+    # print("\nPlayer's Hand:".join((str(p) for p in player.cards))+"\n ")
 
 
 def show_all(player, dealer):
-    pass
+    print("\nDealer's Hand:".join((str(p) for p in dealer.cards)))
+    print("Dealer's Hand =", dealer.value)
+    for x in player.cards:
+        print("\nPlayer's Hand:"+x)
+    print("Player's Hand =", player.value)
 
 
-def player_busts():
-    pass
+def player_busts(player,dealer,chips):
+    print("Player busts!")
+    chips.lose_bet()
 
 
-def player_wins():
-    pass
+def player_wins(player,dealer,chips):
+    print("Player wins!")
+    chips.win_bet()
 
 
-def dealer_busts():
-    pass
+def dealer_busts(player,dealer,chips):
+    print("Dealer busts")
+    chips.win_bet()
 
 
-def dealer_wins():
-    pass
+def dealer_wins(player,dealer,chips):
+    print("Dealer wins!")
+    chips.lose_bet
 
 
-def push():
-    pass
+def push(player, dealer):
+    print("Dealer and Player tie! It's a push.")

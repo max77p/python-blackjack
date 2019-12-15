@@ -1,3 +1,4 @@
+
 import random
 
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
@@ -38,6 +39,7 @@ class Deck:
 
     def deal(self):
         single_card = self.deck.pop()  # gets one card from deck using pop method
+        print(single_card)
         return single_card
 
 

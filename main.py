@@ -16,38 +16,58 @@ from playerPackage import players
 # will need- face cards (jack,queen,king) count as a value of 10
 # aces can count as either 1 or 11 whichever value is preferable to the player
 
+def take_bet(chips):
+
+    while True:
+        try:
+            chips.bet = int(input("How many chips would you like to bet?"))
+        except ValueError:
+            print("Sorry, a bet must be an integer")
+        else:
+            if chips.bet > chips.total:
+                print("Sorry, your bet can't exceed", chips.total)
+            else:
+                break
 
 
-# dealer=players.dealer()
-
-print("WELCOME TO BLACKJACK")
-# remove and return the 4th item
-
-test_deck=cards.Deck() #build the deck
-# print(test_deck)
-test_deck.shuffle() #shuffle the deck
-test_player=cards.Hand() # initiate the hand
-test_player.add_card(test_deck.deal()) # deal single card and add it to the add card method
-test_player.add_card(test_deck.deal()) # deal single card and add it to the add card method
-print(test_player.value)
 
 
-for card in test_player.cards:
-    print(card)
-# username=raw_input("Enter your name: ")
-# currentplayer=players.human(username)
-# bRoll=input("How many chips would you like to bet?")
-# bankcheck=currentplayer.checkBank(bRoll)
-# while not bankcheck:
-#     bRoll=input("How many chips would you like to bet?")
-#     bankcheck=currentplayer.checkBank(bRoll)
-#     if bankcheck:
-#         break
+global playing
+while True:
+    
+    print("\nWELCOME TO BLACKJACK\n ")
 
-# deck=cards.Deck()#create the deck
-# # deck.show()
+    #build the deck and shuffle
+    deck=cards.Deck()
+    deck.shuffle()
 
-# currentplayer.show()
-# x=deck.shuffle()
-# # print(x)
-# # deck.showhumancards(x)
+    #get two cards for player
+    player_hand=cards.Hand()
+    player_hand.add_card(deck.deal())
+    player_hand.add_card(deck.deal())
+
+    #get two cards for dealer
+    dealer_hand=cards.Hand()
+    dealer_hand.add_card(deck.deal())
+    dealer_hand.add_card(deck.deal())
+
+    #take the bet from player
+    player_chips=players.Chips()
+    take_bet(player_chips)
+
+    players.show_some(player_hand,dealer_hand)
+
+    while players.playing:
+
+        players.hit_or_stand(deck,player_hand)
+
+        players.show_some(player_hand,dealer_hand)
+
+        if player_hand.value > 21:
+            players.player_busts(player_hand,dealer_hand,player_chips)
+            break 
+
+    
+
+    
+
