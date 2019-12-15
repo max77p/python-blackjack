@@ -1,27 +1,32 @@
 
+def take_bet():
+    pass
 
+def hit(deck,hand):
+    pass
 
-class human:
-    def __init__(self, name):
-        self.name = name
-        self.bank = 100
+def hit_or_stand(deck,hand):
+    global playing
 
-    def show(self):
-        print("{} is name and {} is bank".format(self.name, self.bank))
+    pass
 
-    def checkBank(self, desiredamount):
-        print(desiredamount)
-        if desiredamount < self.bank:
-            self.bank = self.bank-desiredamount
-            print("New amount is {}".format(self.bank))
-            return True
-        else:
-            print("Sorry you don't have enough chips. You have: {}".format(self.bank))
-            return False
+def show_some(player,dealer):
+    pass
 
+def show_all(player,dealer):
+    pass
 
+def player_busts():
+    pass
 
-class dealer:
-    def __init__(self):
-        self.name = "Dealer"
-        print("Dealer created")
+def player_wins():
+    pass
+
+def dealer_busts():
+    pass
+    
+def dealer_wins():
+    pass
+    
+def push():
+    pass

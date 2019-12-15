@@ -21,20 +21,23 @@ from playerPackage import players
 # dealer=players.dealer()
 
 print("WELCOME TO BLACKJACK")
-username=raw_input("Enter your name: ")
-currentplayer=players.human(username)
-bRoll=input("How many chips would you like to bet?")
-bankcheck=currentplayer.checkBank(bRoll)
-while not bankcheck:
-    bRoll=input("How many chips would you like to bet?")
-    bankcheck=currentplayer.checkBank(bRoll)
-    if bankcheck:
-        break
+test_deck=cards.Deck()
+test_deck.shuffle()
+test_player=cards.Hand()
+# username=raw_input("Enter your name: ")
+# currentplayer=players.human(username)
+# bRoll=input("How many chips would you like to bet?")
+# bankcheck=currentplayer.checkBank(bRoll)
+# while not bankcheck:
+#     bRoll=input("How many chips would you like to bet?")
+#     bankcheck=currentplayer.checkBank(bRoll)
+#     if bankcheck:
+#         break
 
-deck=cards.Deck()#create the deck
-# deck.show()
+# deck=cards.Deck()#create the deck
+# # deck.show()
 
-currentplayer.show()
-x=deck.shuffle()
-# print(x)
-# deck.showhumancards(x)
+# currentplayer.show()
+# x=deck.shuffle()
+# # print(x)
+# # deck.showhumancards(x)
