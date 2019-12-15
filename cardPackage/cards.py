@@ -49,20 +49,13 @@ class Hand:
 
     def add_card(self, card):
         self.cards.append(card)
-        self.value += values[card.rank]
+        # print(card.rank)
+        self.value += values[card.rank] #adds up value of cards when player adds to holding cards array above
+        if card.rank == 'Ace':
+            self.aces+=1
 
     def adjust_for_ace(self):
-        pass
+        while self.value > 21 and self.aces: #if value exceeds 21 and there are aces in hand, then reduce total value by 10 (1to11) and reduce ace used by 1
+            self.value -=10
+            self.aces -=1
 
-
-class Chips:
-
-    def __init__(self):
-        self.total = 100
-        self.bet = 0
-
-    def win_bet(self):
-        pass
-
-    def lose_bet(self):
-        pass

@@ -21,9 +21,19 @@ from playerPackage import players
 # dealer=players.dealer()
 
 print("WELCOME TO BLACKJACK")
-test_deck=cards.Deck()
-test_deck.shuffle()
-test_player=cards.Hand()
+# remove and return the 4th item
+
+test_deck=cards.Deck() #build the deck
+# print(test_deck)
+test_deck.shuffle() #shuffle the deck
+test_player=cards.Hand() # initiate the hand
+test_player.add_card(test_deck.deal()) # deal single card and add it to the add card method
+test_player.add_card(test_deck.deal()) # deal single card and add it to the add card method
+print(test_player.value)
+
+
+for card in test_player.cards:
+    print(card)
 # username=raw_input("Enter your name: ")
 # currentplayer=players.human(username)
 # bRoll=input("How many chips would you like to bet?")
