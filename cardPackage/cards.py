@@ -1,10 +1,10 @@
 import random;
 
-suits=pass
-ranks=pass
-values=pass
+# suits=pass
+# ranks=pass
+# values=pass
 
-player=True
+# player=True
 
 class Card:
     def __init__(self):
