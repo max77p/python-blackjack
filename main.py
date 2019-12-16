@@ -1,5 +1,6 @@
 from cardPackage import cards
 from playerPackage import players
+
 # blackjack rule
 # will need-two players - human and computer---------- done
 # will need-deck of cards --------------------- done
@@ -32,9 +33,9 @@ def take_bet(chips):
 
 
 
-global playing
+
 while True:
-    
+
     print("\nWELCOME TO BLACKJACK\n ")
 
     #build the deck and shuffle
@@ -58,16 +59,42 @@ while True:
     players.show_some(player_hand,dealer_hand)
 
     while players.playing:
-
+        print("current player hand is: "+player_hand.value.__str__())
         players.hit_or_stand(deck,player_hand)
+
 
         players.show_some(player_hand,dealer_hand)
 
         if player_hand.value > 21:
             players.player_busts(player_hand,dealer_hand,player_chips)
             break 
-
     
+    if player_hand.value <=21:
+        
+        while dealer_hand.value<17:
+            players.hit(deck,dealer_hand)
+        
+        #show all cards
+        players.show_all(player_hand,dealer_hand)
 
-    
+        if(dealer_hand.value>21):
+            players.dealer_busts(player_hand,dealer_hand,player_chips)
+        elif dealer_hand.value>player_hand.value:    
+            players.dealer_wins(player_hand,dealer_hand,player_chips)
+        elif dealer_hand.value<player_hand.value:
+            players.player_wins(player_hand,dealer_hand,player_chips)
+        else:
+            players.push(player_hand,dealer_hand)
+
+    # Inform Player of their chips total 
+    print("\nPlayer's winnings stand at",player_chips.total)
+
+    newGame=raw_input("Would you like to play another hand? 'y' or 'n' ")
+
+    if newGame[0].lower()=='y':
+        players.playing=True
+        continue
+    else:
+        print("Thanks for playing!")
+        break
 

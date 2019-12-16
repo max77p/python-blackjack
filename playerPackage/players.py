@@ -1,3 +1,5 @@
+playing = True
+
 class Chips:
 
     def __init__(self):
@@ -21,8 +23,8 @@ def hit_or_stand(deck, hand):
     global playing
 
     while True:
-        x = input("Would you like to hit or stand? Enter 'h' or 's' ")
-
+        x = raw_input("Would you like to hit or stand? Enter 'h' or 's' ")
+        print(x)
         if x[0].lower() == 'h':
             hit(deck, hand)
 
@@ -37,20 +39,24 @@ def hit_or_stand(deck, hand):
 
 
 def show_some(player, dealer):
+    print("------------------------show some-------------")
     print("\nDealer's Hand:")
     print(" <card hidden>")
     print(''+dealer.cards[1].__str__()+"\n")
     for x in player.cards:
         print("Player's Hand: "+x.__str__())
+    print("------------------------show some-------------")
     # print("\nPlayer's Hand:".join((str(p) for p in player.cards))+"\n ")
 
 
 def show_all(player, dealer):
+    print("------------------------show ALL-------------")
     print("\nDealer's Hand:".join((str(p) for p in dealer.cards)))
     print("Dealer's Hand =", dealer.value)
     for x in player.cards:
-        print("\nPlayer's Hand:"+x)
+        print("\nPlayer's Hand:"+x.__str__())
     print("Player's Hand =", player.value)
+    print("------------------------show all-------------")
 
 
 def player_busts(player,dealer,chips):
